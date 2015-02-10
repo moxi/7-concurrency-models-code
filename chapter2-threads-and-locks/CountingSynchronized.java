@@ -1,23 +1,24 @@
 /**
 ** To compile the file:
-** javac Counting.java
+** javac CountingSynchronized.java
 **
 ** To run:
-** java Counting
+** java CountingSynchronized
 **
 ** After compiling/executing this code three times this is the output:
-** 12660
-** 12091
-** 11903
+** 20000
+** 20000
+** 20000
+**  
 **/
-public class Counting {
-  
+public class CountingSynchronized {
+
   public static void main(String ...args) throws InterruptedException {
 
       class Counter {
 
         private int count = 0;
-        public void increment() { ++count; }
+        public synchronized void increment() { ++count; }
         public int getCount() { return count; }
 
       }
