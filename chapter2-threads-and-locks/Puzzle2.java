@@ -8,10 +8,10 @@
 ***/
 /**
 ** To compile the file:
-** javac Puzzle.java
+** javac Puzzle2.java
 **
 ** To run:
-** java Puzzle
+** java Puzzle2
 **
 ** After compiling/executing this code several times this is the output I get:
 ** The meaning of life is:42
@@ -21,7 +21,7 @@
 ** The meaning of life is:0
 **
 **/
-public class Puzzle {
+public class Puzzle2 {
 
   static boolean answerReady = false;
   static int answer = 0;
@@ -34,11 +34,16 @@ public class Puzzle {
 
   static Thread t2 = new Thread() {
     public void run() {
-      if (answerReady) {
-        System.out.println("The meaning of life is:" + answer);
-      } else {
-        System.out.println("I don't know the answer");
+
+      while(!answerReady) {
+        try {
+          Thread.sleep(1000);
+        } catch(InterruptedException ie ) {
+          System.err.print(ie);
+        }
       }
+
+      System.out.println("The meaning of life is:" + answer);
     }
   };
 
